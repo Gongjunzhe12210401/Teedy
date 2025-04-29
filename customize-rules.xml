@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ruleset name="Custom Ruleset"
+         xmlns="http://pmd.sourceforge.net/ruleset/2.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:noNamespaceSchemaLocation="http://pmd.sourceforge.net/ruleset_2_0_0.xsd">
+
+    <description>
+        Custom PMD ruleset for metrics: LoC, Cyclomatic Complexity, WMC, CBO.
+        These rules are safe and compatible with current PMD versions.
+    </description>
+
+    <!-- Lines of Code (LoC) -->
+    <rule ref="category/java/design.xml/ExcessiveMethodLength"/>
+    <rule ref="category/java/design.xml/ExcessiveClassLength"/>
+
+    <!-- Cyclomatic Complexity (CC) -->
+    <rule ref="category/java/design.xml/CyclomaticComplexity"/>
+
+    <!-- Weighted Methods per Class (WMC) -->
+    <rule ref="category/java/design.xml/TooManyMethods"/>
+
+    <!-- Coupling Between Objects (CBO) -->
+    <rule ref="category/java/design.xml/CouplingBetweenObjects"/>
+
+</ruleset>
