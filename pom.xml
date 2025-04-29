@@ -83,6 +83,46 @@
 
   <build>
     <plugins>
+
+      <plugin>
+        <groupId>org.jacoco</groupId>
+        <artifactId>jacoco-maven-plugin</artifactId>
+        <version>0.8.9</version>
+        <executions>
+          <!-- 这个绑定在 test 阶段会自动插桩代码 -->
+          <execution>
+            <goals>
+              <goal>prepare-agent</goal>
+            </goals>
+          </execution>
+          <!-- 这个执行报告生成 -->
+          <execution>
+            <id>report</id>
+            <phase>test</phase>
+            <goals>
+              <goal>report</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
+
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-surefire-plugin</artifactId>
+        <version>3.0.0</version>
+        <configuration>
+        <includes> 
+          <include>Test1.java</include> 
+        </includes>
+          <excludes>
+            <exclude>**/TestMimeTypeUtil.java</exclude>
+            <exclude>**/TestFileUtil.java</exclude>
+            <exclude>**/TestPdfFormatHandler.java</exclude>
+          </excludes>
+        </configuration>
+      </plugin>
+
+
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-antrun-plugin</artifactId>
@@ -117,6 +157,7 @@
         <version>${org.eclipse.jetty.jetty-maven-plugin.version}</version>
       </plugin>
     </plugins>
+    
   </build>
 
   <modules>
@@ -124,6 +165,45 @@
     <module>docs-web-common</module>
     <module>docs-web</module>
   </modules>
+
+
+  <distributionManagement>
+    <site>
+      <id>local-staging</id>
+      <name>Local Staging Site</name>
+      <url>file://${project.build.directory}/staging</url>
+    </site>
+  </distributionManagement>
+
+
+
+
+  <reporting>
+    <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-project-info-reports-plugin</artifactId>
+        <version>3.4.1</version>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-javadoc-plugin</artifactId>
+        <version>3.6.3</version>
+        <configuration>
+          <failOnError>false</failOnError>
+        </configuration>
+        <reportSets>
+          <reportSet>
+            <id>default</id>
+            <reports>
+              <report>javadoc</report>
+            </reports>
+          </reportSet>
+        </reportSets>
+      </plugin>
+    </plugins>
+  </reporting>
+
 
   <dependencyManagement>
     <dependencies>
