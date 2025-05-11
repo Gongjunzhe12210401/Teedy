@@ -109,6 +109,8 @@
     <script src="app/docs/directive/Pell.js" type="text/javascript"></script>
     <script src="app/docs/directive/AddSpaceBetween.js" type="text/javascript"></script>
     <script src="app/docs/directive/InvertTextColor.js" type="text/javascript"></script>
+    <script src="app/docs/controller/UserRequest.js" type="text/javascript"></script>
+
     <!-- endref -->
   </head>
   <body translate-cloak ng-cloak>
@@ -144,6 +146,9 @@
           <li ui-sref-active="{ active: 'user.**', active2: 'group.**' }">
             <a href="#/user"><span class="fas fa-user"></span> {{ 'index.nav_users_groups' | translate }}</a>
           </li>
+          <li ui-sref-active="{ active: 'userRequests.**' }" ng-show="userInfo.username != 'guest'">
+            <a href="#/userRequests"><span class="fas fa-user-plus"></span> 注册申请</a>
+          </li>          
         </ul>
 
         <ul class="nav navbar-nav navbar-right" ng-show="!userInfo.anonymous">
