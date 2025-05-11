@@ -1,0 +1,25 @@
+<!-- partial/docs/registerRequestModal.html -->
+<div class="modal-header">
+    <h4 class="modal-title">申请注册账号</h4>
+  </div>
+  <div class="modal-body">
+    <form name="registerForm" novalidate>
+      <div class="form-group">
+        <label>用户名</label>
+        <input type="text" class="form-control" ng-model="form.username" placeholder="请输入用户名" required />
+      </div>
+      <div class="form-group">
+        <label>邮箱</label>
+        <input type="email" class="form-control" ng-model="form.email" placeholder="请输入邮箱" required />
+      </div>
+      <div class="form-group">
+        <label>申请理由（可选）</label>
+        <textarea class="form-control" ng-model="form.reason" placeholder="简要说明为什么要注册" rows="3"></textarea>
+      </div>
+    </form>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-default" ng-click="cancel()">取消</button>
+    <button type="button" class="btn btn-primary" ng-click="submit()" ng-disabled="!form.username || !form.email">提交申请</button>
+  </div>
+  

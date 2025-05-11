@@ -135,6 +135,13 @@
       <scope>test</scope>
     </dependency>
 
+    <dependency>
+      <groupId>jakarta.ws.rs</groupId>
+      <artifactId>jakarta.ws.rs-api</artifactId>
+      <version>3.1.0</version>
+    </dependency>
+
+
   </dependencies>
 
   <build>
@@ -146,17 +153,7 @@
 
     <plugins>
       <!-- 新增 PMD 插件 -->
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-pmd-plugin</artifactId>
-        <version>3.15.0</version>
-        <configuration>
-          <rulesets>
-            <ruleset>category/java/bestpractices.xml</ruleset> <!-- 如果你之前这样改了 -->
-          </rulesets>
-          <failOnViolation>false</failOnViolation>  <!-- 加上这一行！重点 -->
-        </configuration>
-      </plugin>
+      
     </plugins>
   </build>
 
