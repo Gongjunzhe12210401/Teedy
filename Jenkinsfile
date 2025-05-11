@@ -6,7 +6,7 @@ pipeline {
     DOCKER_HUB_CREDENTIALS = credentials('dockerhub_credentials')
 
     // 替换成你 Docker Hub 上的用户名（如 wangduane）
-    DOCKER_IMAGE = '12210401/teedy'
+    DOCKER_IMAGE = 'gongjunzhe/teedy'
 
     // 自动使用构建编号作为标签
     DOCKER_TAG = "${env.BUILD_NUMBER}"
