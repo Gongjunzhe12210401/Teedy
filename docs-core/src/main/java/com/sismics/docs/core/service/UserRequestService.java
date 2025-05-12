@@ -1,5 +1,6 @@
 package com.sismics.docs.core.service;
 
+import com.sismics.docs.core.constant.Constants;
 import com.sismics.docs.core.dao.UserDao;
 import com.sismics.docs.core.dao.UserRequestDao;
 import com.sismics.docs.core.model.jpa.User;
@@ -45,12 +46,15 @@ public class UserRequestService {
                 // 创建用户
                 User user = new User();
                 user.setId(UUID.randomUUID().toString());
+                user.setRoleId(Constants.DEFAULT_USER_ROLE);
                 user.setUsername(request.getUsername());
                 user.setEmail(request.getEmail());
-                user.setPassword("default123"); // TODO: 后续改为随机或邮件设置
+                user.setPassword("default123"); 
                 user.setCreateDate(new Date());
                 user.setPrivateKey(EncryptionUtil.generatePrivateKey());
                 user.setStorageCurrent(0L);
+                user.setStorageQuota(100_000L);
+                user.setOnboarding(true);
     
                 // 使用固定管理员 ID 创建用户
                 userDao.create(user, "admin");

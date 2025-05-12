@@ -1,83 +1,107 @@
 package com.sismics.docs.core.model.jpa;
 
-import javax.persistence.*;
+import jakarta.persistence.*;
 import java.util.Date;
 
+/**
+ * User registration request entity.
+ */
 @Entity
-@Table(name = "user_request")
+@Table(name = "T_USER_REQUEST")
 public class UserRequest {
 
+    /**
+     * Request ID (primary key).
+     */
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;  // 改为 Long 以匹配 GenerationType.IDENTITY
+    @Column(name = "ID")
+    private Long id;
 
-    @Column(name = "username", nullable = false, unique = true)
+    /**
+     * Username requested.
+     */
+    @Column(name = "USERNAME", nullable = false, unique = true, length = 255)
     private String username;
 
-    @Column(name = "email", nullable = false)
+    /**
+     * Email address.
+     */
+    @Column(name = "EMAIL", nullable = false, length = 255)
     private String email;
 
-    @Column(name = "reason")
+    /**
+     * Reason for requesting an account.
+     */
+    @Column(name = "REASON", length = 1000)
     private String reason;
 
-    @Column(name = "request_status", nullable = false)
+    /**
+     * Status: pending / approved / rejected.
+     */
+    @Column(name = "REQUEST_STATUS", nullable = false, length = 10)
     private String status;
 
-
+    /**
+     * Creation timestamp.
+     */
     @Temporal(TemporalType.TIMESTAMP)
-    @Column(name = "create_date", nullable = false)
+    @Column(name = "CREATE_DATE", nullable = false)
     private Date createDate;
 
-    // 无参构造函数
-    public UserRequest() {
-    }
+    // ======= Getters and Setters =======
 
-    // Getters and setters
     public Long getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public UserRequest setId(Long id) {
         this.id = id;
+        return this;
     }
 
     public String getUsername() {
         return username;
     }
 
-    public void setUsername(String username) {
+    public UserRequest setUsername(String username) {
         this.username = username;
+        return this;
     }
 
     public String getEmail() {
         return email;
     }
 
-    public void setEmail(String email) {
+    public UserRequest setEmail(String email) {
         this.email = email;
+        return this;
     }
 
     public String getReason() {
         return reason;
     }
 
-    public void setReason(String reason) {
+    public UserRequest setReason(String reason) {
         this.reason = reason;
+        return this;
     }
 
     public String getStatus() {
         return status;
     }
 
-    public void setStatus(String status) {
+    public UserRequest setStatus(String status) {
         this.status = status;
+        return this;
     }
 
     public Date getCreateDate() {
         return createDate;
     }
 
-    public void setCreateDate(Date createDate) {
+    public UserRequest setCreateDate(Date createDate) {
         this.createDate = createDate;
+        return this;
     }
 }

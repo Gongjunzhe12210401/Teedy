@@ -42,7 +42,7 @@ angular.module('docs',
       views: {
         page: {
           templateUrl: 'partial/docs/userRequest.html',
-          controller: 'UserRequest'
+          controller: 'UserRequestController'
         }
       }
     })

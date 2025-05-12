@@ -93,7 +93,9 @@ angular.module('docs').controller('Login', function(Restangular, $scope, $rootSc
             return;
           }
 
-          Restangular.all('user-request').post($scope.form).then(() => {
+          Restangular.all('user-request').post($scope.form, null, {
+            'Content-Type': 'application/json'
+          }).then(() => {
             $uibModalInstance.close();
             $dialog.messageBox('成功', '申请已提交，管理员审核后您将收到通知。', [{ result: 'ok', label: '确定', cssClass: 'btn-primary' }]);
           }, (error) => {
