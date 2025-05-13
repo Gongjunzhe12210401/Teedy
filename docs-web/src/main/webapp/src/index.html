@@ -146,9 +146,9 @@
           <li ui-sref-active="{ active: 'user.**', active2: 'group.**' }">
             <a href="#/user"><span class="fas fa-user"></span> {{ 'index.nav_users_groups' | translate }}</a>
           </li>
-          <li ui-sref-active="{ active: 'userRequests.**' }" ng-show="userInfo.username != 'guest'">
+          <li ui-sref-active="{ active: 'userRequests.**' }" ng-show="userInfo.username === 'admin'">
             <a href="#/userRequests"><span class="fas fa-user-plus"></span> 注册申请</a>
-          </li>          
+          </li>
         </ul>
 
         <ul class="nav navbar-nav navbar-right" ng-show="!userInfo.anonymous">

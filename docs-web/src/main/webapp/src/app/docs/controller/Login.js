@@ -93,15 +93,18 @@ angular.module('docs').controller('Login', function(Restangular, $scope, $rootSc
             return;
           }
 
-          Restangular.all('user-request').post($scope.form, null, {
-            'Content-Type': 'application/json'
-          }).then(() => {
-            $uibModalInstance.close();
-            $dialog.messageBox('成功', '申请已提交，管理员审核后您将收到通知。', [{ result: 'ok', label: '确定', cssClass: 'btn-primary' }]);
-          }, (error) => {
-            const errMsg = error.data && error.data.message ? error.data.message : '申请提交失败，请稍后再试。';
-            $dialog.messageBox('错误', errMsg, [{ result: 'ok', label: '确定', cssClass: 'btn-primary' }]);
-          });
+          const formData = $.param($scope.form); // 表单格式编码
+
+          Restangular
+            .all('user-request')
+            .customPOST(formData, null, {}, { 'Content-Type': 'application/x-www-form-urlencoded' })
+            .then(() => {
+              $uibModalInstance.close();
+              $dialog.messageBox('成功', '申请已提交，管理员审核后您将收到通知。', [{ result: 'ok', label: '确定', cssClass: 'btn-primary' }]);
+            }, (error) => {
+              const errMsg = error.data && error.data.message ? error.data.message : '申请提交失败，请稍后再试。';
+              $dialog.messageBox('错误', errMsg, [{ result: 'ok', label: '确定', cssClass: 'btn-primary' }]);
+            });
         };
       },
       resolve: {
