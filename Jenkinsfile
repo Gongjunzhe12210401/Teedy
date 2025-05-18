@@ -62,7 +62,7 @@ pipeline {
     environment {
         DEPLOYMENT_NAME = "teedy-deploy"
         CONTAINER_NAME = "teedy"  // 容器名应与你 image 的 Dockerfile 保持一致
-        IMAGE_NAME = "your-dockerhub-id/teedy:tag"
+        IMAGE_NAME = "gongjunzhe/teedy:latest"
     }
 
     stages {
