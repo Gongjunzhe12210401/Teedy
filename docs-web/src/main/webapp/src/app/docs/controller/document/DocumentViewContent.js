@@ -224,4 +224,24 @@ angular.module('docs').controller('DocumentViewContent', function ($scope, $root
       }
     })
   };
+  $scope.editImage = function (file) {
+    $uibModal.open({
+      templateUrl: 'partial/docs/file.edit.image.html',
+      controller: 'ModalFileEditImage',
+      size: 'lg',
+      resolve: {
+        file: function () {
+          return file;
+        }
+      }
+    }).result.then(function (editedBlob) {
+      // 如果返回的是 Blob，我们需要将它包装为 File 类型（包含文件名和类型）
+      if (editedBlob) {
+        const editedFile = new File([editedBlob], file.name, { type: file.mimetype });
+        // 直接复用 uploadNewVersion 流程
+        $scope.uploadNewVersion([editedFile], file);
+      }
+    });
+  };
+
 });

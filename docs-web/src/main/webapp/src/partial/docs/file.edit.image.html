@@ -1,0 +1,60 @@
+<div class="modal-header">
+  <h3 class="modal-title">Edit Image - {{ file.name }}</h3>
+</div>
+
+<div class="modal-body text-center">
+  <canvas id="canvas" style="border:1px solid #ccc; max-width: 100%;"></canvas>
+
+  <!-- 图形操作按钮 -->
+  <div class="btn-group mt-10 mb-10">
+    <button class="btn btn-default" ng-click="addRect()">
+      <span class="fas fa-vector-square"></span> Rect
+    </button>
+    <button class="btn btn-default" ng-click="addLine()">
+      <span class="fas fa-slash"></span> Line
+    </button>
+    <button class="btn btn-default" ng-click="enableDraw()">
+      <span class="fas fa-pencil-alt"></span> Draw
+    </button>
+    <button class="btn btn-default" ng-click="disableDraw()">
+      <span class="fas fa-mouse-pointer"></span> Select
+    </button>
+    <button class="btn btn-default" ng-click="clearCanvas()">
+      <span class="fas fa-trash"></span> Clear
+    </button>
+  </div>
+
+  <!-- 曝光与旋转按钮 -->
+  <div class="btn-group mt-10 mb-10">
+    <button class="btn btn-default" ng-click="adjustExposure(0.1)">
+      <span class="fas fa-sun"></span> Exposure +
+    </button>
+    <button class="btn btn-default" ng-click="adjustExposure(-0.1)">
+      <span class="fas fa-moon"></span> Exposure -
+    </button>
+    <button class="btn btn-default" ng-click="rotate(90)">
+      <span class="fas fa-redo"></span> Rotate ↻
+    </button>
+    <button class="btn btn-default" ng-click="rotate(-90)">
+      <span class="fas fa-undo"></span> Rotate ↺
+    </button>
+  </div>
+
+  <!-- 裁剪按钮 -->
+  <div class="btn-group mt-10 mb-10">
+    ...
+    <button class="btn btn-default" ng-click="startCrop()">
+      <span class="fas fa-crop"></span> Crop
+    </button>
+  </div>
+
+</div>
+
+<div class="modal-footer">
+  <button class="btn btn-primary" ng-click="applyEdits()">
+    <span class="fas fa-check"></span> Apply
+  </button>
+  <button class="btn btn-default" ng-click="cancel()">
+    <span class="fas fa-times"></span> Cancel
+  </button>
+</div>
